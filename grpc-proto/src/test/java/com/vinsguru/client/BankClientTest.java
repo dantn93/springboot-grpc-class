@@ -2,6 +2,7 @@ package com.vinsguru.client;
 
 import com.vinsguru.models.Balance;
 import com.vinsguru.models.BalanceCheckRequest;
+import com.vinsguru.models.WithdrawRequest;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import com.vinsguru.models.BankServiceGrpc;
@@ -32,6 +33,13 @@ public class BankClientTest {
         System.out.println(
                 "Received: " + balance.getAmount()
         );
+    }
+
+    @Test
+    public void withdrawTest() {
+        WithdrawRequest withdrawRequest = WithdrawRequest.newBuilder().setAccountNumber(7).setAmount(40).build();
+        this.blockingStub.withdraw(withdrawRequest)
+                .forEachRemaining(money -> System.out.println("Received: " + money.getValue()));
     }
 
 
