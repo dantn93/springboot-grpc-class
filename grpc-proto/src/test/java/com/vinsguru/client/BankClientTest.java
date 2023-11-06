@@ -1,6 +1,5 @@
 package com.vinsguru.client;
 
-import com.google.common.util.concurrent.Uninterruptibles;
 import com.vinsguru.models.Balance;
 import com.vinsguru.models.BalanceCheckRequest;
 import com.vinsguru.models.BankServiceGrpc;
@@ -11,7 +10,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.CountDownLatch;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BankClientTest {
@@ -47,9 +46,13 @@ public class BankClientTest {
     }
 
     @Test
-    public void withdrawAsyncTest() {
+    public void withdrawAsyncTest() throws InterruptedException {
+        CountDownLatch latch = new CountDownLatch(1);
         WithdrawRequest withdrawRequest = WithdrawRequest.newBuilder().setAccountNumber(10).setAmount(50).build();
-        this.bankServiceStub.withdraw(withdrawRequest, new MoneyStreamingResponse());
-        Uninterruptibles.sleepUninterruptibly(10, TimeUnit.SECONDS);
+        this.bankServiceStub.withdraw(withdrawRequest, new MoneyStreamingResponse(latch));
+//        Uninterruptibles.sleepUninterruptibly(10, TimeUnit.SECONDS);
+        latch.await();
+
     }
+
 }
