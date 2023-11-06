@@ -1,11 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.vinsguru</groupId>
+  <groupId>org.example</groupId>
   <artifactId>protobuf</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>Archetype - protobuf</name>
   <url>http://maven.apache.org</url>
+
 
   <dependencies>
     <dependency>
@@ -19,8 +20,14 @@
       <version>6.0.53</version>
       <scope>provided</scope>
     </dependency>
-  </dependencies>
 
+<!--    jackson-databind là một thư viện Java mạnh mẽ dùng để chuyển đổi Java Objects sang JSON và ngược lại. Đây là một phần của dự án lớn hơn Jackson, một bộ công cụ xử lý JSON cho Java, thường được sử dụng để tạo và phân tích cú pháp các yêu cầu và phản hồi trong các ứng dụng web RESTful.-->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.13.3</version>
+    </dependency>
+  </dependencies>
   <build>
     <extensions>
       <extension>
@@ -65,4 +72,5 @@
       </plugin>
     </plugins>
   </build>
+
 </project>
