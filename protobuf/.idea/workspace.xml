@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7de34084-3afd-46da-bd53-9ca9eed1f0df" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vinsguru/protobuf/DefaultValueDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/proto/common/address.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/proto/common/car.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/proto/dealer.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vinsguru/protobuf/OneOfDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/proto/credentials.proto" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/person.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/person.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +42,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "3/enum-proto",
+    "git-widget-placeholder": "4/import-modules-proto",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -65,7 +62,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1699251277847</updated>
-      <workItem from="1699251278885" duration="7003000" />
+      <workItem from="1699251278885" duration="8970000" />
     </task>
     <servers />
   </component>
