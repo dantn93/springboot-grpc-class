@@ -1,5 +1,6 @@
 package com.vinsguru.protobuf;
 
+import com.google.protobuf.Int32Value;
 import com.vinsguru.models.Address;
 import com.vinsguru.models.Car;
 import com.vinsguru.models.Person;
@@ -32,13 +33,13 @@ public class CompositionDemo {
 
         Person sam = Person.newBuilder()
                 .setName("sam")
-                .setAge(25)
+                .setAge(Int32Value.newBuilder().setValue(20).build())
 //                .addCar(accord)
 //                .addCar(civic)
                 .addAllCar(cars)
                 .setAddress(address)
                 .build();
 
-        System.out.println(sam);
+        System.out.println(sam.hasAge());
     }
 }
