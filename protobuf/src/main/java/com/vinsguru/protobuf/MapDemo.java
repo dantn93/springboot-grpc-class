@@ -1,5 +1,6 @@
 package com.vinsguru.protobuf;
 
+import com.vinsguru.models.BodyStyle;
 import com.vinsguru.models.Car;
 import com.vinsguru.models.Dealer;
 
@@ -9,6 +10,7 @@ public class MapDemo {
                 .setMake("Honda")
                 .setModel("Accord")
                 .setYear(2020)
+                .setBodyStyle(BodyStyle.COUPE)
                 .build();
 
         Car civic = Car.newBuilder()
@@ -24,5 +26,6 @@ public class MapDemo {
 
         System.out.println(dealer.getModelOrDefault(2004, accord));
         System.out.println(dealer.getModelMap());
+        System.out.println(dealer.getModelOrThrow(2020).getBodyStyle());
     }
 }
