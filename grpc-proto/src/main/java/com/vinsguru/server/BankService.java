@@ -19,7 +19,7 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
     }
 
     @Override
-    public void withdraw(WithdrawRequest request, StreamObserver<com.vinsguru.models.Money> responseObserver) {
+    public void withdraw(WithdrawRequest request, StreamObserver<Money> responseObserver) {
         int accountNumber = request.getAccountNumber();
         int amount = request.getAmount();
         int balance = AccountDatabase.getBalance(accountNumber);
@@ -38,5 +38,10 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
         }
 
         responseObserver.onCompleted();
+    }
+
+    @Override
+    public StreamObserver<DepositRequest> cashDeposit(StreamObserver<Balance> responseObserver) {
+        return new CashStreamingRequest(responseObserver);
     }
 }
