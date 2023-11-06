@@ -1,19 +1,23 @@
 package com.vinsguru.client;
 
+import com.google.common.util.concurrent.Uninterruptibles;
 import com.vinsguru.models.Balance;
 import com.vinsguru.models.BalanceCheckRequest;
+import com.vinsguru.models.BankServiceGrpc;
 import com.vinsguru.models.WithdrawRequest;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import com.vinsguru.models.BankServiceGrpc;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+
+import java.util.concurrent.TimeUnit;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BankClientTest {
 
     private BankServiceGrpc.BankServiceBlockingStub blockingStub;
+    private BankServiceGrpc.BankServiceStub bankServiceStub;
     @BeforeAll
     public void setup(){
         ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("localhost", 6565)
@@ -21,7 +25,7 @@ public class BankClientTest {
                 .build();
 
         this.blockingStub = BankServiceGrpc.newBlockingStub(managedChannel);
-
+        this.bankServiceStub = BankServiceGrpc.newStub(managedChannel);
     }
 
     @Test
@@ -42,5 +46,10 @@ public class BankClientTest {
                 .forEachRemaining(money -> System.out.println("Received: " + money.getValue()));
     }
 
-
+    @Test
+    public void withdrawAsyncTest() {
+        WithdrawRequest withdrawRequest = WithdrawRequest.newBuilder().setAccountNumber(10).setAmount(50).build();
+        this.bankServiceStub.withdraw(withdrawRequest, new MoneyStreamingResponse());
+        Uninterruptibles.sleepUninterruptibly(10, TimeUnit.SECONDS);
+    }
 }
